@@ -1,0 +1,65 @@
+CSS基础语法
+CSS 规则由两个主要的部分构成:选择器,以及一条或多条声明.
+每条声明由一个属性和一个值组成.
+每个属性有一个值.属性和值被冒号分开.
+例如:下面这行代码的作用是将 h1 元素内的文字颜色定义为红色,同时将字体大小设置为 14 像素.
+在这个例子中,h1 是选择器,color 和 font-size 是属性,red 和 14px 是值.
+h1 {color:red; font-size:14px;}//看见后面有分号,如果是一个属性或者这个属性在尾部可以不加分号,除了这两种情况必须加 不然页面是很错乱的
+=======================
+页面居中问题
+可以先设置
+body{margin:0 auto;}
+有的浏览器即使设置这个也不会居中的那么就要加上这句DTD申明代码
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+===================
+body和div背景设置问题
+①、background-color//背景颜色属性
+②、background-image:url('背景图片路径');//背景图片属性
+body { background-color:blue;} p{ background-image:url('背景图片路径');} 
+③、如果需要在页面上对背景图像进行平铺,可以使用 background-repeat 属性.
+背景定位
+可以利用 background-position 属性改变图像在背景中的位置.
+下面的例子在 body 元素中将一个背景图像居中放置垂直平铺:
+body
+{ 
+  background-image: url(http://www.iiwnet.com/logo.gif);
+  background-repeat: repeat-y;//垂直方向平铺repeat-x水平方向的repeat两个方向都平铺 no-repeat都不平铺 
+  background-position:center;//居中
+}
+body是标签名,background-color,background-image,background-repeat是属性,blue是属性值等
+当然这些属性可以用一句话综合写起来 看下面属性综合写法
+=================
+多个标签组合
+h1,h2,h3 {color:red;}//是逗号分开的 一般用在有的标签样式一样就可以写在一起这样就减少代码的使用,能重复调用
+把标题<h1><h2><h3>的字体颜色都变为红色
+=================
+属性综合写法
+div {font:italic normal bold 11pt arial;}// 这是字体相关属性的综合写法
+div的字体风格(font-style)属性值是italic,字体变量(font-variant)属性值是normal,字体浓淡(font-weight)属性值是bold,字体大小(font-size)属性值是11pt,字体名称(font-family)属性值是Arial
+p{border:1px solid #dddddd}//这是边距属性综合写法 大小 样式(solid为实线 dashed为虚线 dotted为点线...还有自己总结)你看到没我这一句css代码结尾没分号;是可以的上面已经讲过了
+================
+标签嵌套
+div h1 {color:blue;}
+div里面的<h1>字体颜色为蓝色.
+div是 h1的父亲 h1是div的儿子 我在写css样式都是用这样的为什么呢?
+原因是你想想就知道了 世界有很多人难道都是你父亲吗 你用标签嵌套,即使这个父亲的儿子名字一样但是这个儿子还是这个父亲的不会是另个人的,所以当你嵌套了就不怕 在其他地方重复用这个标签名或类名(ID选择器是唯一的不能重复)
+===============
+定义id
+#main {background:#ff0000;width:100%;}
+<div id="main">hello</div>//那么直接调用#mian
+这里是用#+id名是方式,也可以用标签名加+#+id名,如div#main,一般不这么用.
+================
+定义class
+.red {color:red;}
+<div class="red" >hello</div>
+同id的写法差不多,把"#"改为"." ,如果一个标签同时定义了id跟class,id具有优先级.
+*表示该标签下的所有元素样式
+body * {padding:0px;}
+用得比较少
+================
+好了没时间就总结这么多 最好要记住
+样式优先级
+(1) 标签中的style > id > class  
+(2) 标签中的style > 页面中的style > 导入的样式@import 
+(3) 用link,如<link rel='stylesheet' type='text/css' href='' />,更写在页面上同等级的.
+  如果同样的样式定义了2次,后面出现的具有优先级.
